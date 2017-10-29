@@ -7,3 +7,7 @@ Use the crypyocompare public api to get the latest exchange rate
 2.  Clicking each card should take you to conversion screen.
 3.  User can enter an amount to be converted in a base currency
 4.  User should get conversion result
+
+# !IMPORTANT
+
+Please find updated apk file at the root of the repository
