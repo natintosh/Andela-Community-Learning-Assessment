@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--private String fSyms = "BTC,ETH";
+        private String tSyms = "NGN,USD,GBP,EUR,CHF,JPY,CNY,CAD,AUD,HKD,INR,ZAR,SEK,RUB,BRL,CLP,CZK,ILS,MXN,KRW";-->
+    <EditTextPreference
+        android:defaultValue="@string/cryto_value"
+        android:key="@string/cryto_key"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Crypto Currencies" />
+    <EditTextPreference
+        android:defaultValue="@string/currencies_value"
+        android:key="@string/currencies_key"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Currencies" />
+</PreferenceScreen>
