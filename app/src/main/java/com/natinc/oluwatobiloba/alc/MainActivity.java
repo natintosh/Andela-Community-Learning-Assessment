@@ -81,15 +81,15 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         if (s.equals(getString(R.string.cryto_key))) {
-            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), "BTC,ETH");
-            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), "NGN,USD,GBP,EUR,CHF,JPY,CNY,CAD,AUD,HKD,INR,ZAR,SEK,RUB,BRL,CLP,CZK,ILS,MXN,KRW");
+            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), fSyms);
+            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), tSyms);
             new WetchUrlTask().execute(fromSymbols, toSymbols);
             Intent intent = getIntent();
             finish();
             startActivity(intent);
         } else if (s.equals(getString(R.string.currencies_key))) {
-            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), "NGN,USD,GBP,EUR,CHF,JPY,CNY,CAD,AUD,HKD,INR,ZAR,SEK,RUB,BRL,CLP,CZK,ILS,MXN,KRW");
-            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), "BTC,ETH");
+            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), tSyms);
+            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), fSyms);
             new WetchUrlTask().execute(fromSymbols, toSymbols);
             Intent intent = getIntent();
             finish();
