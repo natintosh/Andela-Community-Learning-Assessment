@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private TextView mTvErrorMessage;
     private ProgressBar mProgressbar;
 
-    private String fSyms = "BTC,ETH,DASH";
+    private String fSyms = "BTC,ETH";
     private String tSyms = "NGN,USD,GBP,EUR,CHF,JPY,CNY,CAD,AUD,HKD,INR,ZAR,SEK,RUB,BRL,CLP,CZK,ILS,MXN,KRW";
 
 
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private void loadData() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), "BTC,ETH");
-        String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), "NGN,USD,GBP,EUR,CHF,JPY,CNY,CAD,AUD,HKD,INR,ZAR,SEK,RUB,BRL,CLP,CZK,ILS,MXN,KRW");
+        String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), fSyms);
+        String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), tSyms);
         new WetchUrlTask().execute(fromSymbols, toSymbols);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
