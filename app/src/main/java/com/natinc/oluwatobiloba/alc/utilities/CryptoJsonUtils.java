@@ -6,10 +6,6 @@ import org.json.JSONObject;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
-/**
- * Created by oluwatobiloba on 10/23/17.
- */
-
 public class CryptoJsonUtils {
 
     /**
