@@ -25,6 +25,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedHashMap;
 
+/**
+ * This application finds the exchange rate between any cryptoCurrencies and currencies
+ */
+
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private final static String LOG_TAG = MainActivity.class.getSimpleName();
@@ -55,25 +59,41 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
     }
 
+    /**
+     * This method execute the async task fetchUrlTask
+     * loadData method retrieves data from user's preferences
+     */
     private void loadData() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), getString(R.string.cryto_value));
         String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), getString(R.string.currencies_value));
         new FetchUrlTask().execute(fromSymbols, toSymbols);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
+    /**
+     *  This method displays the result
+     */
+
     private void showResult() {
-        mTvErrorMessage.setVisibility(View.INVISIBLE);
-        mCryptoRecyclerView.setVisibility(View.VISIBLE);
+        mTvErrorMessage.setVisibility(View.INVISIBLE); // set the visibility of the error message to invisible
+        mCryptoRecyclerView.setVisibility(View.VISIBLE); // set the visibility of the recycler to visible
     }
+
+    /**
+     *  This method displays the error message
+     */
 
     private void showErrorMessage() {
-        mCryptoRecyclerView.setVisibility(View.INVISIBLE);
-        mTvErrorMessage.setVisibility(View.VISIBLE);
+        mCryptoRecyclerView.setVisibility(View.INVISIBLE); // set the visibility of the recycler to invisible
+        mTvErrorMessage.setVisibility(View.VISIBLE); // set the visibility of the error message to visible
     }
 
+    /**
+     *  onSharedPreferenceChanged Method is a callback to be invoked when the sharedPreference is change
+     *  @param sharedPreferences the instance of the sharedPreference that was change
+     *  @param s the key of the sharePreference that was changed
+     */
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         if (s.equals(getString(R.string.cryto_key))) {
@@ -123,13 +143,23 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         super.onDestroy();
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
     }
-
+    /**
+     *  FetchUrlTask that extends AsyncTask
+     */
     private class FetchUrlTask extends AsyncTask<String, Void, LinkedHashMap<String, LinkedHashMap<String, Double>>> {
 
+        /**
+         *  onPreExecute methods runs before for the task is completed
+         */
         @Override
         protected void onPreExecute() {
             mProgressbar.setVisibility(View.VISIBLE);
         }
+
+        /**
+         * This method doest the network asynchronously
+         *  @return LinkedHashMap of the result
+         */
 
         @Override
         protected LinkedHashMap<String, LinkedHashMap<String, Double>> doInBackground(String... strings) {
@@ -163,6 +193,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             }
         }
 
+        /**
+         * @param hashMapData accepts a parameter from the the doInBackground Method
+         */
         @Override
         protected void onPostExecute(LinkedHashMap<String, LinkedHashMap<String, Double>> hashMapData) {
             mProgressbar.setVisibility(View.INVISIBLE);
