@@ -13,7 +13,7 @@ public class CryptoJsonUtils {
      */
     public static LinkedHashMap<String, LinkedHashMap<String, Double>> getSimpleDataFromJson(String cryptoJsonString) throws JSONException {
 
-        LinkedHashMap<String, LinkedHashMap<String, Double>> map = new LinkedHashMap<String, LinkedHashMap<String, Double>>(); // Initialise the map
+        LinkedHashMap<String, LinkedHashMap<String, Double>> map = new LinkedHashMap<>(); // Initialise the map
 
         JSONObject jsonObject = new JSONObject(cryptoJsonString); // Initialise the jsonObject
 
