@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), getString(R.string.cryto_value));
         String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), getString(R.string.currencies_value));
-        new WetchUrlTask().execute(fromSymbols, toSymbols);
+        new FetchUrlTask().execute(fromSymbols, toSymbols);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -79,14 +79,14 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         if (s.equals(getString(R.string.cryto_key))) {
             String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), getString(R.string.cryto_value));
             String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), getString(R.string.currencies_value));
-            new WetchUrlTask().execute(fromSymbols, toSymbols);
+            new FetchUrlTask().execute(fromSymbols, toSymbols);
             Intent intent = getIntent();
             finish();
             startActivity(intent);
         } else if (s.equals(getString(R.string.currencies_key))) {
             String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), getString(R.string.cryto_value));
             String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), getString(R.string.currencies_value));
-            new WetchUrlTask().execute(fromSymbols, toSymbols);
+            new FetchUrlTask().execute(fromSymbols, toSymbols);
             Intent intent = getIntent();
             finish();
             startActivity(intent);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
     }
 
-    public class WetchUrlTask extends AsyncTask<String, Void, LinkedHashMap<String, LinkedHashMap<String, Double>>> {
+    private class FetchUrlTask extends AsyncTask<String, Void, LinkedHashMap<String, LinkedHashMap<String, Double>>> {
 
         @Override
         protected void onPreExecute() {
@@ -139,11 +139,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             String fromCurrency = strings[0];
             String toCurrency = strings[1];
 
-            URL requestUrl = null;
+            URL requestUrl;
             requestUrl = NetworkUtils.buildUrl(fromCurrency, toCurrency);
 
-            String responceFromUrl = null;
-            LinkedHashMap<String, LinkedHashMap<String, Double>> resultFromJson = null;
+            String responceFromUrl;
+            LinkedHashMap<String, LinkedHashMap<String, Double>> resultFromJson;
 
             try {
                 responceFromUrl = NetworkUtils
