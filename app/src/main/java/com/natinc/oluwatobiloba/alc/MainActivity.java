@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private void loadData() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), fSyms);
-        String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), tSyms);
+        String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), getString(R.string.cryto_value));
+        String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), getString(R.string.currencies_value));
         new WetchUrlTask().execute(fromSymbols, toSymbols);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
@@ -81,15 +81,15 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         if (s.equals(getString(R.string.cryto_key))) {
-            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), fSyms);
-            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), tSyms);
+            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), getString(R.string.cryto_value));
+            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), getString(R.string.currencies_value));
             new WetchUrlTask().execute(fromSymbols, toSymbols);
             Intent intent = getIntent();
             finish();
             startActivity(intent);
         } else if (s.equals(getString(R.string.currencies_key))) {
-            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), tSyms);
-            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), fSyms);
+            String toSymbols = sharedPreferences.getString(getString(R.string.currencies_key), getString(R.string.cryto_value));
+            String fromSymbols = sharedPreferences.getString(getString(R.string.cryto_key), getString(R.string.currencies_value));
             new WetchUrlTask().execute(fromSymbols, toSymbols);
             Intent intent = getIntent();
             finish();
