@@ -34,10 +34,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private TextView mTvErrorMessage;
     private ProgressBar mProgressbar;
 
-    private String fSyms = "BTC,ETH";
-    private String tSyms = "NGN,USD,GBP,EUR,CHF,JPY,CNY,CAD,AUD,HKD,INR,ZAR,SEK,RUB,BRL,CLP,CZK,ILS,MXN,KRW";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

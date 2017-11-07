@@ -28,7 +28,7 @@
                 <ImageView
                     android:id="@+id/crypto_image"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp" />
+                    android:layout_height="230dp" />
 
                 <ProgressBar
                     android:id="@+id/image_progressbar"
