@@ -12,13 +12,17 @@ import java.util.LinkedHashMap;
 
 public class CryptoJsonUtils {
 
+    /**
+     * @return LinkedHashMap of data in key value pair
+     */
     public static LinkedHashMap<String, LinkedHashMap<String, Double>> getSimpleDataFromJson(String cryptoJsonString) throws JSONException {
 
-        LinkedHashMap<String, LinkedHashMap<String, Double>> map = new LinkedHashMap<String, LinkedHashMap<String, Double>>();
+        LinkedHashMap<String, LinkedHashMap<String, Double>> map = new LinkedHashMap<String, LinkedHashMap<String, Double>>(); // Initialise the map
 
-        JSONObject jsonObject = new JSONObject(cryptoJsonString);
+        JSONObject jsonObject = new JSONObject(cryptoJsonString); // Initialise the jsonObject
 
-        Iterator<String> keys = jsonObject.keys();
+        Iterator<String> keys = jsonObject.keys(); // Iterator keys used to iterate through the object
+
 
         while (keys.hasNext()) {
             String key = keys.next();
@@ -36,6 +40,6 @@ public class CryptoJsonUtils {
             map.put(key, innerMap);
         }
 
-        return map;
+        return map; // returning the data
     }
 }
