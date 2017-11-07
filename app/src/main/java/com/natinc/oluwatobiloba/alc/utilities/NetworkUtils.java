@@ -9,12 +9,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-/**
- * Created by oluwatobiloba on 10/22/17.
- */
-
-//https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=NGN,USD,GBP,EUR,CHF,JPY,CNY,CAD,AUD,HKD,INR,ZAR,SEK,RUB,BRL,CLP,CZK,ILS,MXN,KRW
-
 public class NetworkUtils {
 
     private final static String BASE_URL = "https://min-api.cryptocompare.com/data/pricemulti";
