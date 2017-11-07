@@ -27,9 +27,9 @@ import java.util.Set;
  * Created by oluwatobiloba on 10/23/17.
  */
 
-public class CrytoCurrencyAdapter extends RecyclerView.Adapter<CrytoCurrencyAdapter.CyptoCurrencyViewHolder> {
+public class CryptoCurrencyAdapter extends RecyclerView.Adapter<CryptoCurrencyAdapter.CyptoCurrencyViewHolder> {
 
-    private static final String LOG_TAG = CrytoCurrencyAdapter.class.getSimpleName();
+    private static final String LOG_TAG = CryptoCurrencyAdapter.class.getSimpleName();
     Context context;
     private LinkedHashMap<String, LinkedHashMap<String, Double>> mappedData = null;
     private List<String> mKeyList = new ArrayList<>();
@@ -38,7 +38,7 @@ public class CrytoCurrencyAdapter extends RecyclerView.Adapter<CrytoCurrencyAdap
     private String mKey;
 
     @Override
-    public CrytoCurrencyAdapter.CyptoCurrencyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CryptoCurrencyAdapter.CyptoCurrencyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         int idForListItemLayout = R.layout.list_item;
         Boolean shouldAttachInParentRoot = false;
@@ -51,7 +51,7 @@ public class CrytoCurrencyAdapter extends RecyclerView.Adapter<CrytoCurrencyAdap
     }
 
     @Override
-    public void onBindViewHolder(CrytoCurrencyAdapter.CyptoCurrencyViewHolder holder, int position) {
+    public void onBindViewHolder(CryptoCurrencyAdapter.CyptoCurrencyViewHolder holder, int position) {
         mKey = mKeyList.get(position);
         holder.bind(context, position, mKeyList.get(position), mInnerList, mInnervalue, mappedData);
     }

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
     private final static String LOG_TAG = MainActivity.class.getSimpleName();
     private RecyclerView mCryptoRecyclerView;
-    private CrytoCurrencyAdapter mAdapter;
+    private CryptoCurrencyAdapter mAdapter;
 
     private TextView mTvErrorMessage;
     private ProgressBar mProgressbar;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mCryptoRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new CrytoCurrencyAdapter();
+        mAdapter = new CryptoCurrencyAdapter();
         mCryptoRecyclerView.setAdapter(mAdapter);
 
         loadData();
@@ -142,16 +142,16 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             URL requestUrl;
             requestUrl = NetworkUtils.buildUrl(fromCurrency, toCurrency);
 
-            String responceFromUrl;
+            String responseFromUrl;
             LinkedHashMap<String, LinkedHashMap<String, Double>> resultFromJson;
 
             try {
-                responceFromUrl = NetworkUtils
+                responseFromUrl = NetworkUtils
                         .getResponseFromHttpUrl(requestUrl);
 
 
                 resultFromJson
-                        = CryptoJsonUtils.getSimpleDataFromJson(responceFromUrl);
+                        = CryptoJsonUtils.getSimpleDataFromJson(responseFromUrl);
                 return resultFromJson;
 
             } catch (IOException e) {
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                 Log.d(LOG_TAG, hashMapData.toString());
                 showResult();
                 mAdapter.setMappedData(hashMapData);
-                new CrytoCurrencyAdapter();
+                new CryptoCurrencyAdapter();
             } else {
                 showErrorMessage();
             }
